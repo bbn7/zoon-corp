@@ -1,0 +1,26 @@
+/* Style for the slider */
+.slider-item {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slider-item img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.slider-item h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #2c3e50;
+}
+
+.slider-item p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+}
