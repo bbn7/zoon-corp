@@ -25,6 +25,9 @@ jobs:
     - name: Build
       run: npm run build
       
+    - name: List build output
+      run: find . -type d -name "out" -o -name ".next" -o -name "dist" | head -10
+      
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
