@@ -1,25 +1,26 @@
+
+
 import type { AppProps } from 'next/app';
-import Link from 'next/link';
+import Head from 'next/head';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 import '../styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <header>
-        <nav>
-          <ul>
-            <li><Link href="/">Home</Link></li>          
-            <li><Link href="/products">Products</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/blog">Blog</Link></li>
-            <li><Link href="/faq">FAQ</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-          </ul>
-        </nav>
-      </header>
-
-      <Component {...pageProps} />
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#1a1a1a" />
+      </Head>
+      
+      <Navigation />
+      
+      <main className="container">
+        <Component {...pageProps} />
+      </main>
+      
+      <Footer />
     </>
   );
 }

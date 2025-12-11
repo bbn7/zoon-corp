@@ -1,0 +1,252 @@
+
+/* Navigation Component Styles */
+.header {
+  background-color: var(--bg-dark);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg) 0;
+  position: relative;
+}
+
+.navBrand {
+  z-index: 60;
+}
+
+.brandLink {
+  color: var(--text-white);
+  font-size: var(--font-size-2xl);
+  font-weight: bold;
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+.brandLink:hover {
+  color: var(--primary-color);
+}
+
+
+/* Desktop Navigation */
+.navList {
+  list-style: none;
+  display: none;
+  gap: var(--space-xl);
+  margin: 0;
+  padding: 0;
+}
+
+.desktopNav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navList,
+  .desktopNav {
+    display: flex;
+  }
+}
+
+.navLink {
+  color: var(--text-white);
+  text-decoration: none;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: var(--primary-color);
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+
+/* Mobile Menu Button */
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  z-index: 60;
+}
+
+@media (min-width: 768px) {
+  .menuButton {
+    display: none;
+  }
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 1.5rem;
+  height: 1.2rem;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--text-white);
+  border-radius: 1px;
+  transition: all var(--transition-normal);
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+
+/* Mobile Navigation Overlay */
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background-color: var(--bg-dark);
+  transition: right var(--transition-normal);
+  z-index: 55;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.mobileOverlay.open {
+  right: 0;
+}
+
+.mobileNavContainer {
+  padding: 6rem var(--space-xl) var(--space-xl) var(--space-xl);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileNavHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.mobileBrand {
+  color: var(--text-white);
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--text-white);
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-normal);
+}
+
+.closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+.mobileNavList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.mobileNavList li {
+  margin-bottom: var(--space-md);
+}
+
+.mobileNavLink {
+  display: block;
+  color: var(--text-white);
+  text-decoration: none;
+  padding: var(--space-lg);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+  border-left: 3px solid transparent;
+}
+
+.mobileNavLink:hover,
+.mobileNavLink.active {
+  color: var(--primary-color);
+  background-color: rgba(231, 76, 60, 0.1);
+  border-left-color: var(--primary-color);
+}
+
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 54;
+  opacity: 0;
+  animation: fadeIn var(--transition-normal) ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .nav {
+    padding: var(--space-sm) 0;
+  }
+  
+  .brandLink {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body:global(.menu-open) {
+  overflow: hidden;
+}
