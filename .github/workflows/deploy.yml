@@ -25,22 +25,8 @@ jobs:
     - name: Build
       run: npm run build
       
-    - name: Check if out directory exists
-      run: |
-        if [ ! -d "./out" ]; then
-          echo "❌ Out directory not found. Checking for alternative output locations..."
-          find . -name "*.html" -type f | head -10
-        else
-          echo "✅ Out directory found!"
-          ls -la out/
-        fi
-      
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
-      if: success()
-      
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        path: ./out
-      if: success()
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./out
